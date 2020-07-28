@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [routerLink]="(['/login'])"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-card-header color="success">
+      <ion-card-title class="ion-text-center">
+        Llena los campos
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm()" novalidate>
+
+
+        <ion-item>
+          <ion-label position="floating">
+            Usuario
+          </ion-label>
+          <ion-input type="text" formControlName="usuario" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.usuario.errors?.required">
+          Llena el campo
+        </span>
+
+
+
+
+        <ion-item>
+
+          <ion-label position="floating">
+            Contraseña
+          </ion-label>
+          <ion-input type="password" formControlName="password" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+          Llena el campo
+        </span>
+        <span class="error ion-padding" maxlength="6" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+          6 caracteres minimo
+        </span>
+
+
+        <ion-item>
+          <ion-label position="floating">
+            Nombre
+          </ion-label>
+          <ion-input type="text" formControlName="name" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+          Llena el campo
+        </span>
+        <!-- 
+      <ion-item>
+        
+        <ion-label position="floating">
+          Repetir contraseña
+        </ion-label>
+        <ion-input type="text"  required #reppass></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.pass2.errors?.required">
+          Llena el campo
+        </span>
+
+        -->
+
+
+
+        <ion-item>
+
+          <ion-label position="floating">
+            Edad
+          </ion-label>
+          <ion-datetime display-timezone="utc" formControlName="edad" (ionChange)="getTime($event)"
+            displayFormat="DD-MM-YYYY"></ion-datetime>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.edad.errors?.required">
+          Llena el campo
+        </span>
+
+
+
+
+        <ion-item>
+
+          <ion-label position="floating">
+            Telefono
+          </ion-label>
+          <ion-input type="text" maxlength="10" formControlName="tel" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.tel.errors?.required">
+          Llena el campo
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.tel.errors?.pattern">
+          Solo numeros
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.tel.errors?.minlength">
+          10 Digitos
+        </span>
+
+
+
+        <ion-item>
+
+          <ion-label position="floating">
+            Direccion
+          </ion-label>
+          <ion-input type="text" formControlName="address" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.address.errors?.required">
+          Llena el campo
+        </span>
+
+        <div class="ion-text-center ion-padding">
+          <ion-button color="success" type="submit" strong shape="round">
+            Registrarse
+          </ion-button>
+        </div>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-padding ion-text-center">
+    <img src="../../assets/icon/logo.png" alt="iconbase" style="max-width: 30%;max-height: 30%;">
+  </div>
+
+
+</ion-content>
