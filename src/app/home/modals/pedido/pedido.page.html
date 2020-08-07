@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title class="ion-text-center">Pedido</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div *ngIf="pedido.length!=0">
+    <div class="ion-text-center">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQtJ34KpCMdYU7VyQJHwssPizPHHMr-sCsDOg&usqp=CAU" alt="checklist">
+    </div>
+
+<ion-card>
+  <ion-card-content>
+
+    
+    <ion-list mode="md">
+      <ion-list-header  lines="inset" color="primary">
+        <ion-title class="ion-text-center" >Lista de Articulos</ion-title>
+      </ion-list-header>
+      <ion-item *ngFor="let item of pedido">
+        <ion-label>{{ item.name }} </ion-label>
+        
+        <ion-text color="secondary" slot="end">
+          $ {{ item.price  }} 
+          <span>mxn</span>
+        </ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <h1 class="ion-text-center" style="font-size: 4em; color: mediumseagreen;"> ${{total}} 
+    <span style="font-size: 20px;">mxn</span>
+  </h1>
+  
+  <div class="ion-text-center">
+    <ion-button shape="round" color="tertiary" (click)="sendPedido()">Realizar Pedido</ion-button>
+  </div>
+</div>
+
+
+<div *ngIf="pedido.length == 0" class="ion-text-center ion-padding ion-justify-content-center">
+  <ion-title>
+    Lista Vacia
+  </ion-title>
+  <div>
+    <img src="https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png" alt="empty">
+  </div>
+</div>
+
+</ion-content>

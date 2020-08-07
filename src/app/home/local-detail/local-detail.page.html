@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar >
+  <ion-buttons >
+    <ion-back-button ></ion-back-button>
+    <ion-title *ngIf="localinfo"  > {{ localinfo.name}} </ion-title>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="localinfo">
+  <ion-img class="ion-padding"
+      src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2020/03/licuado-de-frutos-rojos-con-leche-de-almendra.jpg">
+  </ion-img>
+
+
+  <div class="ion-text-center ion-padding">
+      <ion-text> {{ localinfo.description }} </ion-text>
+  </div>
+  <ion-card >
+      <ion-card-content>
+
+          <ion-item>
+              <ion-title class="ion-no-padding" color="dark">Direccion</ion-title>
+              <ion-text> {{ localinfo.address }} </ion-text>
+              <ion-icon name="navigate-circle" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item>
+              <ion-title class="ion-no-padding" color="dark">Horario</ion-title>
+              <ion-text> {{localinfo.horary}} </ion-text>
+              <ion-icon name="timer" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item>
+              <ion-title class="ion-no-padding" color="dark">Telefono</ion-title>
+              <ion-text> {{localinfo.tel}} </ion-text>
+              <ion-icon name="call" slot="end"></ion-icon>
+          </ion-item>
+
+      </ion-card-content>
+  </ion-card>
+
+  <div id="map">
+
+  </div>
+
+
+  <div>
+      <ion-list mode="md">
+          <ion-list-header  lines="inset" color="light">
+              <ion-title>Menu</ion-title>
+          </ion-list-header>
+          <ion-item *ngFor="let item of localinfo.menu">
+
+              <ion-text color="secondary" slot="start">
+                  $ {{ item.price  }} 
+                  <span>mxn</span>
+              </ion-text>
+              <ion-label class="ion-text-justify">
+                 {{ item.name }} 
+              </ion-label>
+              <ion-checkbox slot="end" (ionChange)="item.isCheck = (item.isCheck == false) ? true : false" ></ion-checkbox>
+          </ion-item>
+      </ion-list>
+  </div>
+
+
+
+  <ion-footer class="ion-text-center ion-padding">
+      <ion-button (click)="pedido()" strong >Pedido</ion-button>
+  </ion-footer>
+</ion-content>
