@@ -28,19 +28,24 @@ export class LoginPage implements OnInit {
   submitLogin(){
     this.isSumitted = true;
     if (!this.loginForm.valid) {
-      console.log('Datos incompletos')
+      //console.log('Datos incompletos')
     } else {
       let datos = this.loginForm.value
       this.tlocalServices.login(datos).subscribe(result => {
         this.resp = result
-        console.log(this.resp.usuario.usuario);
+        //console.log(this.resp.usuario.usuario);
         
         this.checkToast('Bienvenido',this.resp.usuario.usuario, 'primary')
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home',{
+          user: this.resp.usuario.usuario,
+          _idUser: this.resp.usuario._id
+        }
+      ]
+      )
         
       }, err => {
         this.resp = err
-        console.log(this.resp.error.err.message);
+       //console.log(this.resp.error.err.message);
         let msn = this.resp.error.err.message
         this.checkToast('Algo salio mal',msn, 'danger' )
         

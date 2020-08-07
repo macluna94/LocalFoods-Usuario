@@ -4,10 +4,19 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+      },
+      {
+        path:':idlocal',
+        loadChildren: () => import('./home/local-detail/local-detail.module').then(m => m.LocalDetailPageModule)
+      }
+    ]
   },
   {
-    path: '',
+    path: "",
     redirectTo: 'login',
     pathMatch: 'full'
   },

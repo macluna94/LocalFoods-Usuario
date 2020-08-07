@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+  },
+  {
+    path: 'local-detail',
+    loadChildren: () => import('./local-detail/local-detail.module').then( m => m.LocalDetailPageModule)
+  },
+  {
+    path: 'pedido',
+    loadChildren: () => import('./modals/pedido/pedido.module').then( m => m.PedidoPageModule)
   }
 ];
 
