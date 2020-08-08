@@ -1,17 +1,7 @@
-import {
-  PedidoModel
-} from './../../../pedidoModel';
-import {
-  TlocalServiceService
-} from './../../../tlocal-service.service';
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
-import {
-  ModalController
-} from '@ionic/angular';
+import {  PedidoModel} from './../../../pedidoModel';
+import {  TlocalServiceService} from './../../../tlocal-service.service';
+import {  Component, OnInit,  Input} from '@angular/core';
+import { ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-pedido',

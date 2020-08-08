@@ -39,9 +39,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/home',{
           user: this.resp.usuario.usuario,
           _idUser: this.resp.usuario._id
-        }
-      ]
-      )
+        }])
         
       }, err => {
         this.resp = err
